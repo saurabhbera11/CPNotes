@@ -33,3 +33,38 @@ struct custom_hash {
 
 unordered_set<int, custom_hash> u;
 
+//coordinate compression
+vector<int> a(n);
+// read the vector
+vector<int> b = a;
+sort(b.begin(), b.end());
+map<int, int> m;
+for (int i = 0; i < n; i++) {
+    m[b[i]] = i;
+}
+for (int i = 0; i < n; i++) {
+    a[i] = m[a[i]];
+}
+
+//Now every value of an array lies in [0, n). The most convineint it that if you need the original value for a[i], you can just write b[a[i]].
+
+int n = a.size();
+vector<pair<int, int>> pairs(n);
+for(int i = 0; i < n; ++i) {
+	pairs[i] = {a[i], i};
+}
+sort(pairs.begin(), pairs.end());
+int nxt = 0;
+for(int i = 0; i < n; ++i) {
+	if(i > 0 && pairs[i-1].first != pairs[i].first) nxt++;
+	a[pairs[i].second] = nxt;
+}
+
+//Another approach
+
+
+
+
+
+
+
