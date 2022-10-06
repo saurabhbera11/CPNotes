@@ -62,7 +62,21 @@ for(int i = 0; i < n; ++i) {
 
 //Another approach
 
+ vector<int> freq(32,0);
+    for(int i=0;i<n;i++){
+        int curr;curr=arr[i];
+        deque<int> dq;
+        while(curr){
+            dq.push_front(curr%2);
+            curr=curr/2;
+        }
+        int j=0;
+        for(int itr=dq.size()-1;itr>=0;itr--){
+            freq[j++]+=dq[itr];
+        }
+    }
 
+//create frequecy bit array
 
 
 
