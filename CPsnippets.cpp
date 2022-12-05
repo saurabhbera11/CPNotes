@@ -14,7 +14,7 @@ bool prime(lli n){
     }
     return true;
 }}
-
+///////////////////////////////////////////////////////////////
 
 struct custom_hash {
     static uint64_t splitmix64(uint64_t x) {
@@ -33,6 +33,8 @@ struct custom_hash {
 
 unordered_set<int, custom_hash> u;
 
+
+
 //coordinate compression
 vector<int> a(n);
 // read the vector
@@ -45,9 +47,10 @@ for (int i = 0; i < n; i++) {
 for (int i = 0; i < n; i++) {
     a[i] = m[a[i]];
 }
-
 //Now every value of an array lies in [0, n). The most convineint it that if you need the original value for a[i], you can just write b[a[i]].
+??--------------------------------------------------------------------------------------------------------------------------------------------
 
+//Another approach
 int n = a.size();
 vector<pair<int, int>> pairs(n);
 for(int i = 0; i < n; ++i) {
@@ -60,8 +63,14 @@ for(int i = 0; i < n; ++i) {
 	a[pairs[i].second] = nxt;
 }
 
-//Another approach
 
+
+
+
+
+
+
+//create frequecy bit array
  vector<int> freq(32,0);
     for(int i=0;i<n;i++){
         int curr;curr=arr[i];
@@ -75,9 +84,27 @@ for(int i = 0; i < n; ++i) {
             freq[j++]+=dq[itr];
         }
     }
+--------------------------------------------------------
 
-//create frequecy bit array
 
+
+//modular inverse of a number//
+ll power(ll x, ll y)
+{
+    if (y == 0)
+        return 1;
+
+    ll p = power(x, y / 2) % MOD;
+    p = (p * p) % MOD;
+
+    return (y % 2 == 0) ? p : (x * p) % MOD;
+}
+
+
+ll inverse(ll a){
+    return power(a,MOD-2);
+}
+-----------------------------------------------
 
 
 
