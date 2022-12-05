@@ -90,20 +90,34 @@ for(int i = 0; i < n; ++i) {
 //Fermats little theorem 
 //works only if mod is a prime 
 //modular inverse of a number//
-ll power(ll x, ll y)
+vector<int> fact(maxN);
+
+void computeFact(int n){
+    fact.reserve(n+1);
+    fact[0]=1;
+    for(int i=1;i<=n;i++){
+        fact[i]=(fact[i-1]*i)%MOD;
+    }
+}
+
+int power(int  x,int y)
 {
     if (y == 0)
         return 1;
-
-    ll p = power(x, y / 2) % MOD;
+    int p = power(x, y / 2) % MOD;
     p = (p * p) % MOD;
-
     return (y % 2 == 0) ? p : (x * p) % MOD;
 }
-
-
-ll inverse(ll a){
+int inverse(int a){
     return power(a,MOD-2);
+}
+
+int nCr(int n,int r)
+{
+    if(n<r)return 0;
+    if(r==0)return 1;
+
+    return fact[n] * inverse(fact[r]) % MOD * inverse(fact[n-r])%MOD;
 }
 -----------------------------------------------
 
