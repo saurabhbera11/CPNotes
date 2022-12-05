@@ -87,7 +87,8 @@ for(int i = 0; i < n; ++i) {
 --------------------------------------------------------
 
 
-
+//Fermats little theorem 
+//works only if mod is a prime 
 //modular inverse of a number//
 ll power(ll x, ll y)
 {
