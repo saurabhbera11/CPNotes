@@ -120,7 +120,21 @@ int nCr(int n,int r)
     return fact[n] * inverse(fact[r]) % MOD * inverse(fact[n-r])%MOD;
 }
 -----------------------------------------------
+//Seive of Eratosthenes
 
+const int template_array_size = 1e6 + 585;
+bool is_prime[template_array_size];
+void seive(){
+    n=template_array_size;
+    memset(is_prime, true, sizeof(is_prime));
+    is_prime[0] = is_prime[1] = false;
+    for (int i = 2; i * i <= n; i++) {
+        if (is_prime[i]) {
+            for (int j = i * i; j <= n; j += i)
+                is_prime[j] = false;
+        }
+    }
+}
 
 
 
