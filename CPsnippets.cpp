@@ -136,5 +136,31 @@ void seive(){
     }
 }
 
+//Chinese Remainder Theorem(CRT)
+int crt(vector<pair<int,int>> v){  //(first-> prime number(p1) ----- second-> k1
+    int ans=0;
+    int n=v.size();
+
+    int m=1;
+
+    for(int i=0;i<n;i++){
+        m*=v[i].first;
+    }
+
+
+    for(int i=0;i<n;i++){
+        int t=1;
+        for(int j=0;j<i;j++){
+            t*=v[j].first;
+            t*= inverse(v[j].first,v[i].first);
+            t%=m;
+        }
+        ans+=(t*(v[i].second + m - ans))%m;
+        ans%=m;
+    }
+
+    return ans;
+}
+//O(N^2)
 
 
