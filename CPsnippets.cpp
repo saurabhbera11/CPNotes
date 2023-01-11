@@ -163,4 +163,20 @@ int crt(vector<pair<int,int>> v){  //(first-> prime number(p1) ----- second-> k1
 }
 //O(N^2)
 
+//template to solve interactive problems
+
+struct Interactor{
+    int limitQueries = 0;
+    int queries = 0;
+    Interactor(int n,int k){
+
+    }
+    int query(int l,int r){
+
+    }
+    void correctOutput(int ans,int n){
+
+    }
+
+};
 
